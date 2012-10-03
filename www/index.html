@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Mobile Gallery</title>
+		<script src="phonegap.js"></script>
+		<script src="js/stuff.js"></script>
+	</head>
+	<body onload="init();">
+		<div id="content">
+			
+			<div id="menu" style="width: 100%; height:40px;" onclick="capturePhoto();">
+				Capture Photo
+			</div>
+			
+			<img src="" style="display:none; width:60px; height:60px;" id="smallImage" />
+			
+			<img src="" style="display:none;" id="largeImage" />
+			
+			<div id="page_camera" class="page">
+				
+			</div>
+			
+			<div id="page_photos" class="page">
+				
+			</div>
+			
+			<div id="page_profile" class="oage">
+				
+			</div>
+		</div>
+	</body>
+</html>
