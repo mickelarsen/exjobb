@@ -10,7 +10,7 @@
 		<description>Finals project. Take pictures, upload them with geolocation data.</description>
 		
 		<author href="www.whitecloud.se" email="mikael.larsen.awd@gmail.com">
-			Mikael Larsén
+			Mikael Larsen
 		</author>
 		
 		<preference name="phonegap-version" value="2.0.0" />
