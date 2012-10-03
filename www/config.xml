@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8">
+<widget xlmns = "http://www.w3.org/ns/widgets"
+		xlmns:gap = "http://phonegap.com/ns/1.0"
+		id = "se.mickelarsen.mobilegallery"
+		versionCode = "10"
+		version = "1.0.0">
+		
+		<name>Mobile GeoGallery</name>
+		
+		<description>Finals project. Take pictures, upload them with geolocation data.</description>
+		
+		<author href="www.whitecloud.se" email="mikael.larsen.awd@gmail.com">
+			Mikael Larsén
+		</author>
+		
+		<preference name="phonegap-version" value="2.0.0" />
+		<preference name="orientation" value="default" />
+		<preference name="target-device" value="universal" />
+		<preference name="fullscreen" value="true" />
+		
+		<icon src="icon.png" width="72" height="72"/>
+		
+		<feature name="http://api.phonegap.com/1.0/camera" />
+		<feature name="http://api.phonegap.com/1.0/geolocation" />
+		<feature name="http://api.phonegap.com/1.0/file" />
+		<feature name="http://api.phonegap.com/1.0/network" />
+		
+	
+</widget>		
