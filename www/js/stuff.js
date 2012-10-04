@@ -20,21 +20,31 @@ function onPhotoDataSuccess(imageData){
 }
 
 function onPhotoURISuccess(imageURI) {
-    // Uncomment to view the image file URI 
-    // console.log(imageURI);
+    var options = new FileUploadOptions();
+	options.fileKey = "file";
+	options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
+	options.mimeType = "image/jpeg";
+	
+	var params = new Object();
+	params.value1 = "test";
+	params.value2 = "params";
+	
+	options.params = params;
+	
+	var ft = new FileTransfer();
+	ft.upload(imageURI, encodeURI("http://mg.whitecloud.se/upload.php"), uploadSuccess, uploadFail, options);
+}
 
-    // Get image handle
-    //
-    var largeImage = document.getElementById('largeImage');
+function uploadSuccess(r){
+	console.log("Code = " + r.responseCode);
+    console.log("Response = " + r.response);
+    console.log("Sent = " + r.bytesSent);
+}
 
-    // Unhide image elements
-    //
-    largeImage.style.display = 'block';
-
-    // Show the captured photo
-    // The inline CSS rules are used to resize the image
-    //
-    largeImage.src = imageURI;
+function uploadFail(error){
+	alert("An error has occurred: Code = " + error.code);
+    console.log("upload error source " + error.source);
+    console.log("upload error target " + error.target);
 }
 
 function capturePhoto(){
