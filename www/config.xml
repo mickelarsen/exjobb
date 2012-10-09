@@ -18,6 +18,8 @@
 		<preference name="target-device" value="universal" />
 		<preference name="fullscreen" value="true" />
 		
+		<access origin="http://mg.whitecloud.se" subdomains="true" />
+		
 		<icon src="icon.png" width="72" height="72"/>
 		
 		<feature name="http://api.phonegap.com/1.0/camera" />
