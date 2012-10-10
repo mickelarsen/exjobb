@@ -30,6 +30,7 @@ function onPhotoURISuccess(imageURI) {
 	params.value2 = "params";
 	
 	options.params = params;
+	options.chunkedMode = false;
 	
 	var ft = new FileTransfer();
 	ft.upload(imageURI, encodeURI("http://mg.whitecloud.se/upload.php"), uploadSuccess, uploadFail, options);
