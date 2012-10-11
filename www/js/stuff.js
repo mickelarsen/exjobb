@@ -11,16 +11,9 @@ function onDeviceReady(){
 	destinationType=navigator.camera.DestinationType;
 }
 
-function onPhotoDataSuccess(imageData){
-	var smallImage=document.getElementById('smallImage');
+function uploadPhoto(imageURI){
 	
-	smallImage.style.display='block';
-	
-	smallImage.src="data:image/jpeg;base64," + imageData;
-}
-
-function onPhotoURISuccess(imageURI) {
-    var options = new FileUploadOptions();
+	var options = new FileUploadOptions();
 	options.fileKey = "img";
 	options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
 	options.mimeType = "image/jpeg";
@@ -29,6 +22,10 @@ function onPhotoURISuccess(imageURI) {
 	
 	var ft = new FileTransfer();
 	ft.upload(imageURI, encodeURI("http://mg.whitecloud.se/upload.php"), uploadSuccess, uploadFail, options);
+}
+
+function onPhotoURISuccess(imageURI) {
+
 }
 
 function uploadSuccess(r){
@@ -44,7 +41,7 @@ function uploadFail(error){
 }
 
 function capturePhoto(){
-	navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality:50, destinationType: destinationType.DATA_URL });
+	navigator.camera.getPicture(uploadPhoto, onFail, { quality:50, destinationType: destinationType.FILE_URI });
 }
 
 function getPhoto(source){
