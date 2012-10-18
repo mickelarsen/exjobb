@@ -16,8 +16,8 @@ function onDeviceReady(){
 
 function geolocateSuccess(position){
 	
-	latitude = position.coords.latitude;
-	longitude = position.coords.longitude;
+	this.latitude = position.coords.latitude;
+	this.longitude = position.coords.longitude;
 	
 }
 	
@@ -33,10 +33,10 @@ function uploadPhoto(imageURI){
 	options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
 	options.mimeType = "image/jpeg";
 
-	navigator.geolocation.getCurrentPosition(geolocateSuccess, geolocateFailure, { timeout: 3000, maximumAge: 3000});
+	navigator.geolocation.getCurrentPosition(geolocateSuccess, geolocateFailure, { timeout: 3000, maximumAge: 3000, enableHighAccuracy: true });
 	
-	options.latitude = latitude;
-	options.longitude = longitude;
+	options.latitude = this.latitude;
+	options.longitude = this.longitude;
 	
 	options.chunkedMode = false;
 	
