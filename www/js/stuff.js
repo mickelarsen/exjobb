@@ -11,12 +11,26 @@ function onDeviceReady(){
 	destinationType=navigator.camera.DestinationType;
 }
 
+function geolocateSuccess(position){
+	
+	var coords = new Array();
+	coords[0]= position.coords.latitude;
+	coords[1]= position.coords.longitude;
+	
+	return coords;
+}
+	
 function uploadPhoto(imageURI){
 	
 	var options = new FileUploadOptions();
 	options.fileKey = "img";
 	options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
 	options.mimeType = "image/jpeg";
+
+	navigator.geolocation.getCurrentPosition(geolocateSuccess, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+	
+	options.coords[0] = latitude;
+	options.coords[1] = longitude;
 	
 	options.chunkedMode = false;
 	
