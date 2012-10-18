@@ -1,9 +1,5 @@
 var pictureSource;
 var destinationType;
-var longitude;
-var latitude;
-
-
 
 function init(){
 	document.addEventListener("deviceready", onDeviceReady, false);
@@ -13,8 +9,6 @@ function onDeviceReady(){
 	pictureSource=navigator.camera.PictureSourceType;
 	destinationType=navigator.camera.DestinationType; 
 }
-
-
 	
 function geolocateFailure(error){
 	alert('code: ' + error.code + '\n' +
@@ -22,7 +16,8 @@ function geolocateFailure(error){
 }	
 	
 function uploadPhoto(imageURI){
-	
+	var longitude;
+	var latitude;
 	var options = new FileUploadOptions();
 	options.fileKey = "img";
 	options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
@@ -33,7 +28,7 @@ function uploadPhoto(imageURI){
 		longitude = position.coords.longitude;
 	}
 	
-	navigator.geolocation.getCurrentPosition(geolocateSuccess, geolocateFailure, { timeout: 30000, maximumAge: 3000, enableHighAccuracy: true });
+	navigator.geolocation.getCurrentPosition(geolocateSuccess, geolocateFailure, { timeout: 30000, maximumAge: 3000 });
 	
 	options.latitude = latitude;
 	options.longitude = longitude;
@@ -42,10 +37,6 @@ function uploadPhoto(imageURI){
 	
 	var ft = new FileTransfer();
 	ft.upload(imageURI, encodeURI("http://mg.whitecloud.se/upload.php"), uploadSuccess, uploadFail, options);
-}
-
-function onPhotoURISuccess(imageURI) {
-
 }
 
 function uploadSuccess(r){
@@ -62,10 +53,6 @@ function uploadFail(error){
 
 function capturePhoto(){
 	navigator.camera.getPicture(uploadPhoto, onFail, { quality:50, destinationType: destinationType.FILE_URI });
-}
-
-function getPhoto(source){
-	navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality:50, destinationType: destinationType.FILE_URI, sourceType: source});
 }
 
 function onFail(message){
