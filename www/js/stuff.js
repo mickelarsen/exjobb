@@ -24,8 +24,8 @@ function uploadPhoto(imageURI){
 	options.mimeType = "image/jpeg";
 
 	function geolocateSuccess(position){	
-		latitude = position.coords.latitude;
-		longitude = position.coords.longitude;
+		this.latitude = position.coords.latitude;
+		this.longitude = position.coords.longitude;
 	}
 	
 	navigator.geolocation.getCurrentPosition(geolocateSuccess, geolocateFailure, { timeout: 30000, maximumAge: 3000 });
