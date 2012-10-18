@@ -2,7 +2,8 @@ var pictureSource;
 var destinationType;
 var longitude;
 var latitude;
-var watchID = null;
+
+
 
 function init(){
 	document.addEventListener("deviceready", onDeviceReady, false);
@@ -10,9 +11,7 @@ function init(){
 
 function onDeviceReady(){
 	pictureSource=navigator.camera.PictureSourceType;
-	destinationType=navigator.camera.DestinationType;
-	var watchOptions = { maximumAge: 3000, timeout: 30000, enableHighAccuracy: true };
-	watchID = navigator.geolocation.watchPosition(geolocateSuccess, geolocateFailure, watchOptions);
+	destinationType=navigator.camera.DestinationType; 
 }
 
 function geolocateSuccess(position){
@@ -34,7 +33,7 @@ function uploadPhoto(imageURI){
 	options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
 	options.mimeType = "image/jpeg";
 
-	
+	navigator.geolocation.getCurrentPosition(geolocateSuccess, geolocateFailure, { timeout: 3000, maximumAge: 3000});
 	
 	options.latitude = latitude;
 	options.longitude = longitude;
