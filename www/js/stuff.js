@@ -33,10 +33,10 @@ function uploadPhoto(imageURI){
 	options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
 	options.mimeType = "image/jpeg";
 
-	navigator.geolocation.getCurrentPosition(geolocateSuccess, geolocateFailure, { timeout: 3000, maximumAge: 3000, enableHighAccuracy: true });
+	navigator.geolocation.getCurrentPosition(geolocateSuccess, geolocateFailure, { timeout: 30000, maximumAge: 3000, enableHighAccuracy: true });
 	
-	options.latitude = this.latitude;
-	options.longitude = this.longitude;
+	options.latitude = latitude;
+	options.longitude = longitude;
 	
 	options.chunkedMode = false;
 	
