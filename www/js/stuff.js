@@ -14,12 +14,7 @@ function onDeviceReady(){
 	destinationType=navigator.camera.DestinationType; 
 }
 
-function geolocateSuccess(position){
-	
-	this.latitude = position.coords.latitude;
-	this.longitude = position.coords.longitude;
-	
-}
+
 	
 function geolocateFailure(error){
 	alert('code: ' + error.code + '\n' +
@@ -33,6 +28,11 @@ function uploadPhoto(imageURI){
 	options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
 	options.mimeType = "image/jpeg";
 
+	function geolocateSuccess(position){	
+		latitude = position.coords.latitude;
+		longitude = position.coords.longitude;
+	}
+	
 	navigator.geolocation.getCurrentPosition(geolocateSuccess, geolocateFailure, { timeout: 30000, maximumAge: 3000, enableHighAccuracy: true });
 	
 	options.latitude = latitude;
