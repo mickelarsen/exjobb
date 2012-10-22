@@ -28,7 +28,7 @@ function uploadPhoto(imageURI){
 	navigator.geolocation.getCurrentPosition(function(position){
 		lat = position.coords.latitude;
 		lon = position.coords.longitude;
-		
+		console.log('latitude longitude:' + lat + lon);
 		var options = new FileUploadOptions();
 		options.fileKey = "img";
 		options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
@@ -38,6 +38,8 @@ function uploadPhoto(imageURI){
 		
 		params.latitude = lat;
 		params.longitude = lon;
+		
+		console.log('lat lon: ' + params.latitude + params.longitude);
 		
 		options.params = params;
 		options.chunkedMode = false;
