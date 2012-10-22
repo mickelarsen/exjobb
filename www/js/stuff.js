@@ -33,9 +33,13 @@ function uploadPhoto(imageURI){
 		options.fileKey = "img";
 		options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
 		options.mimeType = "image/jpeg";
-
-		options.latitude = lat;
-		options.longitude = lon;
+		
+		var params = new Object();
+		
+		params.latitude = lat;
+		params.longitude = lon;
+		
+		options.params = params;
 		options.chunkedMode = false;
 	
 		var ft = new FileTransfer();
