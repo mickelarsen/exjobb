@@ -43,7 +43,10 @@ function uploadPhoto(imageURI){
 		
 		options.params = params;
 		options.chunkedMode = false;
-	
+		
+		console.log('options params: ' + options.params);
+		
+		console.log('all options: ' + options);
 		var ft = new FileTransfer();
 		ft.upload(imageURI, encodeURI("http://mg.whitecloud.se/upload.php"), uploadSuccess, uploadFail, options);
 	});
