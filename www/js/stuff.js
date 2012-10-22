@@ -25,19 +25,23 @@ function geolocateFailure(error){
 // }
 
 function uploadPhoto(imageURI){
-	var options = new FileUploadOptions();
-	options.fileKey = "img";
-	options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
-	options.mimeType = "image/jpeg";
+	navigator.geolocation.getCurrentPosition(function(position){
+		lat = position.coords.latitude;
+		lon = position.coords.longitude;
+		
+		var options = new FileUploadOptions();
+		options.fileKey = "img";
+		options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
+		options.mimeType = "image/jpeg";
 
-	navigator.geolocation.getCurrentPosition(function(position){ lat = position.coords.latitude; lon = position.coords.longitude;}, geolocateFailure, { timeout: 3000, maximumAge: 3000 });
+		options.latitude = lat;
+		options.longitude = lon;
+		options.chunkedMode = false;
 	
-	options.latitude = lat;
-	options.longitude = lon;
-	options.chunkedMode = false;
+		var ft = new FileTransfer();
+		ft.upload(imageURI, encodeURI("http://mg.whitecloud.se/upload.php"), uploadSuccess, uploadFail, options);
+	});
 	
-	var ft = new FileTransfer();
-	ft.upload(imageURI, encodeURI("http://mg.whitecloud.se/upload.php"), uploadSuccess, uploadFail, options);
 }
 
 function getGeolocation(){
