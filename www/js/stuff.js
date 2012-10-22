@@ -1,7 +1,7 @@
 var pictureSource;
 var destinationType;
 
-var options = new FileUploadOptions();
+
 
 
 function init(){
@@ -24,6 +24,7 @@ function geolocateSuccess(position){
 }
 
 function uploadPhoto(imageURI){
+	var options = new FileUploadOptions();
 	options.fileKey = "img";
 	options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
 	options.mimeType = "image/jpeg";
