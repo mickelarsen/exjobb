@@ -1,6 +1,7 @@
 var pictureSource;
 var destinationType;
 
+var options = new FileUploadOptions();
 
 
 
@@ -18,18 +19,17 @@ function geolocateFailure(error){
 		  'message' + error.message + '\n');
 }	
 
-function geolocateSuccess(position){	
-	options.latitude = position.coords.latitude;
-	options.longitude = position.coords.longitude;
-}
+// function geolocateSuccess(position){	
+	// options.latitude = position.coords.latitude;
+	// options.longitude = position.coords.longitude;
+// }
 
 function uploadPhoto(imageURI){
-	var options = new FileUploadOptions();
 	options.fileKey = "img";
 	options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
 	options.mimeType = "image/jpeg";
 
-	navigator.geolocation.getCurrentPosition(geolocateSuccess, geolocateFailure, { timeout: 3000, maximumAge: 3000 });
+	navigator.geolocation.getCurrentPosition(function(position){ options.latitude = position.coords.latitude; options.longitude = position.coords.longitude;}, geolocateFailure, { timeout: 3000, maximumAge: 3000 });
 	
 	options.chunkedMode = false;
 	
