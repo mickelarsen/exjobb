@@ -36,6 +36,22 @@ function uploadPhoto(imageURI){
 	ft.upload(imageURI, encodeURI("http://mg.whitecloud.se/upload.php"), uploadSuccess, uploadFail, options);
 }
 
+function getGeolocation(){
+	navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocateFailure, { timeout: 3000, maximumAge: 3000 });
+}
+
+function geolocationSuccess(position){
+	var element = document.getElementById('geolocation');
+        element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
+                            'Longitude: '          + position.coords.longitude             + '<br />' +
+                            'Altitude: '           + position.coords.altitude              + '<br />' +
+                            'Accuracy: '           + position.coords.accuracy              + '<br />' +
+                            'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
+                            'Heading: '            + position.coords.heading               + '<br />' +
+                            'Speed: '              + position.coords.speed                 + '<br />' +
+                            'Timestamp: '          + position.timestamp                    + '<br />';
+}
+
 function uploadSuccess(r){
 	console.log("Code = " + r.responseCode);
     console.log("Response = " + r.response);
