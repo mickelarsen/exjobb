@@ -5,32 +5,22 @@
 		<title>Mobile Gallery</title>
 		<script src="phonegap.js"></script>
 		<script src="js/stuff.js"></script>
-		<script src="http://jsconsole.com/remote.js?33FD74C8-7AA0-42B8-AA38-E5C526D4CEBC"></script>
 	</head>
 	<body onload="init();">
 		<div id="content">
 			
-			<div id="menu" style="width: 100%; height:40px;" onclick="capturePhoto();">
-				Capture Photo
+			<div id="photoupload">	
+				<img src="img/clicktoupload.jpg" id="imagePreview" onclick="capturePhoto();" /> <br />
+				Touch again to capture new image.
+				<br />
+				<form>
+					Description: 
+					<textarea id="description" rows="3" cols="30"></textarea>
+					
+					<input type="button" value="Upload" onclick="uploadPhoto();" />
+				</form>
 			</div>
 			
-			<img src="" style="display:none; width:60px; height:60px;" id="smallImage" />
-			
-			<img src="" style="display:none;" id="largeImage" />
-			
-			<div id="page_camera" class="page" style="width: 100%; height: 40px; border: 1px solid black;" onclick="getGeolocation();">
-				Get geolocation
-			</div>
-			
-			<div id="geolocation"></div>
-			
-			<div id="page_photos" class="page">
-				
-			</div>
-			
-			<div id="page_profile" class="page">
-				
-			</div>
 		</div>
 	</body>
 </html>

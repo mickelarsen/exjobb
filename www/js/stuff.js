@@ -24,55 +24,38 @@ function geolocateFailure(error){
 	// options.longitude = position.coords.longitude;
 // }
 
-function uploadPhoto(imageURI){
+function uploadPhoto(){
 	navigator.geolocation.getCurrentPosition(function(position){
 		lat = position.coords.latitude;
 		lon = position.coords.longitude;
-		console.log('latitude longitude:' + lat + lon);
+		
+		var description = document.getElementById('description').value;
+		var imageURI = document.getElementById('imagePreview').value;
 		var options = new FileUploadOptions();
 		options.fileKey = "img";
 		options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
 		options.mimeType = "image/jpeg";
 		
 		var params = new Object();
-		
+		params.description = description;
 		params.latitude = lat;
 		params.longitude = lon;
-		
-		console.log('lat lon: ' + params.latitude + params.longitude);
 		
 		options.params = params;
 		options.chunkedMode = false;
 		
-		console.log('options params: ' + options.params);
-		
-		console.log('all options: ' + options);
 		var ft = new FileTransfer();
 		ft.upload(imageURI, encodeURI("http://mg.whitecloud.se/upload.php"), uploadSuccess, uploadFail, options);
 	});
 	
 }
 
-function getGeolocation(){
-	navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocateFailure, { timeout: 3000, maximumAge: 3000 });
-}
-
-function geolocationSuccess(position){
-	var element = document.getElementById('geolocation');
-        element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
-                            'Longitude: '          + position.coords.longitude             + '<br />' +
-                            'Altitude: '           + position.coords.altitude              + '<br />' +
-                            'Accuracy: '           + position.coords.accuracy              + '<br />' +
-                            'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
-                            'Heading: '            + position.coords.heading               + '<br />' +
-                            'Speed: '              + position.coords.speed                 + '<br />' +
-                            'Timestamp: '          + position.timestamp                    + '<br />';
-}
 
 function uploadSuccess(r){
 	console.log("Code = " + r.responseCode);
     console.log("Response = " + r.response);
     console.log("Sent = " + r.bytesSent);
+	alert('Upload Success');
 }
 
 function uploadFail(error){
@@ -81,8 +64,13 @@ function uploadFail(error){
     console.log("upload error target " + error.target);
 }
 
+function previewPhoto(imageURI){
+	var image = document.getElementById('imagePreview');
+	image.src = imageURI;
+}
+
 function capturePhoto(){
-	navigator.camera.getPicture(uploadPhoto, onFail, { quality:50, destinationType: destinationType.FILE_URI });
+	navigator.camera.getPicture(previewPhoto, onFail, { quality:50, destinationType: destinationType.FILE_URI });
 }
 
 function onFail(message){
