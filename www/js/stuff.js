@@ -30,10 +30,10 @@ function uploadPhoto(){
 		lon = position.coords.longitude;
 		
 		var description = document.getElementById('description').value;
-		var imageURI = document.getElementById('imagePreview').value;
+		var imageName = document.getElementById('imagePreview').src;
 		var options = new FileUploadOptions();
 		options.fileKey = "img";
-		options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
+		options.fileName = imageName.substr(imageName.lastIndexOf('/')+1);
 		options.mimeType = "image/jpeg";
 		
 		var params = new Object();
@@ -45,7 +45,7 @@ function uploadPhoto(){
 		options.chunkedMode = false;
 		
 		var ft = new FileTransfer();
-		ft.upload(imageURI, encodeURI("http://mg.whitecloud.se/upload.php"), uploadSuccess, uploadFail, options);
+		ft.upload(imageName, encodeURI("http://mg.whitecloud.se/upload.php"), uploadSuccess, uploadFail, options);
 	});
 	
 }
