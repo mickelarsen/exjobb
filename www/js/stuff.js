@@ -50,7 +50,6 @@ function uploadPhoto(){
 	
 }
 
-
 function uploadSuccess(r){
 	console.log("Code = " + r.responseCode);
     console.log("Response = " + r.response);
@@ -75,4 +74,12 @@ function capturePhoto(){
 
 function onFail(message){
 	alert('Failed: ' + message);
+}
+
+function getPhotos(){
+	$.ajax({
+		url: mg.whitecloud.se/getPhotos.php
+	}).done(function(html){
+		$("#images").append(html);
+	}
 }

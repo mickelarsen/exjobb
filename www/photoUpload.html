@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+<body onload="init();">
+<head>
+	<title>Mobile Gallery</title>
+	<script src="phonegap.js"></script>
+	<script src="js/stuff.js"></script>
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/jquery.mobile-1.2.0.min.js"></script>
+</head>
+<div data-role="page">
+	<div id="photoupload">	
+		<img src="img/clicktoupload.jpg" id="imagePreview" onclick="capturePhoto();" style="width:120px; height:120px;"/> <br />
+			Touch again to capture new image.
+		<br />
+		<form>
+			Description: 
+			<textarea id="description" rows="3" cols="30"></textarea>
+					
+			<input type="button" value="Upload" onclick="uploadPhoto();" />
+		</form>
+	</div>
+</div>
+</body>
+</html>
