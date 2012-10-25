@@ -1,9 +1,11 @@
+
+
 var pictureSource;
 var destinationType;
-
-
 var lat;
 var lon;
+
+
 
 function init(){
 	document.addEventListener("deviceready", onDeviceReady, false);
@@ -81,5 +83,9 @@ function getPhotos(){
 		url: mg.whitecloud.se/getPhotos.php
 	}).done(function(html){
 		$("#images").append(html);
-	}
+	});
 }
+
+$(document).ready(function() {
+  // initialization code goes here
+});

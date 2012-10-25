@@ -4,12 +4,18 @@
 <body onload="init();">
 <head>
 	<title>Mobile Gallery</title>
+	<link rel="stylesheet" type="text/css" src="css/stuff.css" />
+	<link rel="stylesheet" type="text/css" src="css/jquery.mobile-1.2.0.min.css" />
 	<script src="phonegap.js"></script>
 	<script src="js/stuff.js"></script>
 	<script src="js/jquery-1.8.2.min.js"></script>
 	<script src="js/jquery.mobile-1.2.0.min.js"></script>
 </head>
 <div data-role="page">
+
+<div data-role="header">Upload</div>
+
+<div data-role="content">
 	<div id="photoupload">	
 		<img src="img/clicktoupload.jpg" id="imagePreview" onclick="capturePhoto();" style="width:120px; height:120px;"/> <br />
 			Touch again to capture new image.
@@ -21,6 +27,7 @@
 			<input type="button" value="Upload" onclick="uploadPhoto();" />
 		</form>
 	</div>
+</div>	
 </div>
 </body>
 </html>
