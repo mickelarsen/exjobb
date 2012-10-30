@@ -19,7 +19,7 @@
 		<preference name="fullscreen" value="true" />
 		
 		<access origin="http://mg.whitecloud.se" subdomains="true" />
-		
+		<access origin="http://mg.whitecloud.se/getPhotos.php" />
 		<icon src="icon.png" width="72" height="72"/>
 		
 		<feature name="http://api.phonegap.com/1.0/camera" />

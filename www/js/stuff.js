@@ -79,8 +79,9 @@ function onFail(message){
 }
 
 function getPhotos(){
+	$.support.cors = true;
 	$.ajax({
-    url: 'http://mg.whitecloud.se/getPhotos.php&callback=?',
+    url: 'http://mg.whitecloud.se/getPhotos.php',
     type: 'GET',
 	cache: false,
 	dataType: 'html',
@@ -91,5 +92,4 @@ function getPhotos(){
 }
 
 $(document).ready(function() {
-	
 });
