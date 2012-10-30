@@ -79,7 +79,16 @@ function onFail(message){
 }
 
 function getPhotos(){
-	$('#uploaded_images').load('http://mg.whitecloud.se/getPhotos.php');
+	$.ajax({
+    url: 'http://mg.whitecloud.se/getPhotos.php',
+    type: 'GET',
+	cache: false,
+	dataType: 'html',
+    success: function(html){
+		var html_res = $(html).find('.image');
+		$('#uploaded_images').append(html_res);
+	}
+});
 }
 
 $(document).ready(function() {
