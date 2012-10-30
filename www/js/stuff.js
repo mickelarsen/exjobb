@@ -48,7 +48,7 @@ function uploadPhoto(){
 		
 		var ft = new FileTransfer();
 		ft.upload(imageName, encodeURI("http://mg.whitecloud.se/upload.php"), uploadSuccess, uploadFail, options);
-	});
+	}, geolocationFailure, {timeout: 5000});
 	
 }
 
