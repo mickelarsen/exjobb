@@ -79,13 +79,7 @@ function onFail(message){
 }
 
 function getPhotos(){
-	$.ajax({
-		url: "http://mg.whitecloud.se/getPhotos.php",
-		type: "GET",
-		dataType: "html"
-	}).done(function(html){
-		$("#uploaded_images").append(html);
-	});
+	$('#uploaded_images').load('http://mg.whitecloud.se/getPhotos.php');
 }
 
 $(document).ready(function() {
