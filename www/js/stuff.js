@@ -48,7 +48,7 @@ function uploadPhoto(){
 		
 		var ft = new FileTransfer();
 		ft.upload(imageName, encodeURI("http://mg.whitecloud.se/upload.php"), uploadSuccess, uploadFail, options);
-	});
+	}, [ timeout: 15000 ]);
 	
 }
 
@@ -80,7 +80,9 @@ function onFail(message){
 
 function getPhotos(){
 	$.ajax({
-		url: mg.whitecloud.se/getPhotos.php
+		url: "mg.whitecloud.se/getPhotos.php",
+		type: "POST",
+		dataType: "html"
 	}).done(function(html){
 		$("#images").append(html);
 	});
