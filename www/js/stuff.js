@@ -80,8 +80,8 @@ function onFail(message){
 
 function getPhotos(){
 	$.ajax({
-		url: "mg.whitecloud.se/getPhotos.php",
-		type: "POST",
+		url: "http://mg.whitecloud.se/getPhotos.php",
+		type: "GET",
 		dataType: "html"
 	}).done(function(html){
 		$("#uploaded_images").append(html);
