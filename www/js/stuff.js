@@ -79,7 +79,6 @@ function onFail(message){
 }
 
 function getPhotos(){
-	$.support.cors = true;
 	$.ajax({
     url: 'http://mg.whitecloud.se/getPhotos.php',
     type: 'GET',
@@ -87,9 +86,11 @@ function getPhotos(){
 	dataType: 'html',
     success: function(html){
 		$('#uploaded_images').append(html);
-	}
+	},
+	error: function(){ alert:("something went wrong")}
 });
 }
 
 $(document).ready(function() {
+	$.support.cors = true;
 });
