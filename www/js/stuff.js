@@ -81,7 +81,6 @@ function onFail(message){
 function getPhotos(){
 	$.ajax({
     url: 'http://mg.whitecloud.se/getPhotos.php',
-    type: 'GET',
 	cache: false,
 	dataType: 'html',
     success: function(html){
